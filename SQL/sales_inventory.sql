@@ -492,12 +492,12 @@ from sales
 where extract(year from sale_date) = 2023;
 
 -- 47. Write a query to find the products that have not been sold in the last 6 months.
-select p.product_name
-from products p
-left join sales s 
-       on p.product_id = s.product_id
-      and s.sale_date >= CURRENT_DATE - INTERVAL '6 months'
-where s.product_id is null;
+SELECT p.product_name
+FROM products p
+LEFT JOIN sales s 
+       ON p.product_id = s.product_id
+      AND s.sale_date >= CURRENT_DATE - INTERVAL '6 months'
+WHERE s.product_id IS NULL;
 
 -- 48. Write a query to select the products with a price range between $200 and $800, and find the total quantity sold for each.
 
