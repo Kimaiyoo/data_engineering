@@ -495,8 +495,8 @@ where extract(year from sale_date) = 2023;
 select p.product_name
 from products p
 left join sales s 
-on p.product_id = s.product_id
-and s.sale_date >= DATE_SUB(CURDATE(), INTERVAL '6 months')
+       on p.product_id = s.product_id
+      and s.sale_date >= CURRENT_DATE - INTERVAL '6 months'
 where s.product_id is null;
 
 -- 48. Write a query to select the products with a price range between $200 and $800, and find the total quantity sold for each.
