@@ -500,14 +500,34 @@ LEFT JOIN sales s
 WHERE s.product_id IS NULL;
 
 -- 48. Write a query to select the products with a price range between $200 and $800, and find the total quantity sold for each.
+select p.product_name, SUM(s.quantity_sold) as total_quantity
+from products p
+JOIN sales s on p.product_id = s.product_id
+where p.price between 200 and 800
+group by p.product_name;
 
 -- 49. Write a query to find the customers who spent the most money in the year 2023.
+select c.customer_id, c.first_name, c.last_name,
+       SUM(s.total_amount) as total_spent
+from customers c
+join sales s on c.customer_id = s.customer_id
+where extract(year from s.sale_date) = 2023
+group by c.customer_id, c.first_name, c.last_name
+order by total_spent desc
+limit 1;
 
 -- 50. Write a query to select the products that have been sold more than 100 times and have a price greater than 200.
+select p.product_name, COUNT(s.sale_id) as total_sales
+from products p
+join sales s on p.product_id = s.product_id
+where p.price > 200
+group by p.product_name
+having COUNT(s.sale_id) > 100;
 
 -- SUBQUERY QUESTIONS
 
 -- 51. Which customers have spent more than the average spending of all customers?
+
 
 -- 52. Which products are priced higher than the average price of all products?
 
@@ -638,6 +658,10 @@ WHERE s.product_id IS NULL;
 -- 104. Display each customer’s registration year from the registration_date
 
 -- 105. Count how many customers registered in each year
+select to_char(registration_date, 'YYYY') as year_registered, count(customer_id) as customer_count
+from customers
+group by extract(year from registration_date), to_char(registration_date, 'YYYY')
+order by extract(year from registration_date);
 
 -- 106. Find the total sales amount for each month
 
