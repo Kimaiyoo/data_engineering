@@ -42,3 +42,4 @@ Power BI
 ```
 
 ## Dashboard Preview
+![dashboard preview](SQL/hotel_performance_analysis/images/dashboard_prev.png)
