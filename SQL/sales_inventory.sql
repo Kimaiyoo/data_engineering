@@ -756,6 +756,14 @@ ON s.product_id = p.product_id;
 -- 138. Replace empty strings in phone numbers with NULL if any
 
 -- 139. Extract the year from registration_date and handle any NULL dates gracefully if any
+select * from customers c ;
+
+select registration_date, to_char(registration_date, 'YYYY') as year
+from customers ;
+
+
+
+
 
 
 
