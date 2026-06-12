@@ -1,3 +1,11 @@
-practice.ipynb
+# Ignore all virtual environments everywhere
+**/.venv/
+**/venv/
 .venv/
-practice/
+
+# Ignore all environment/secret files everywhere
+**/.env
+.env
+
+# Ignore Python cache everywhere
+**/__pycache__/
